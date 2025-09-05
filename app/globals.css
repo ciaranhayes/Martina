@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+:root {
+  --background: #EFF0E2;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-purple: #7851A9;
+}
+
+body {
+  background: var(--background);
+  font-family: 'Montserrat', sans-serif;
+}
