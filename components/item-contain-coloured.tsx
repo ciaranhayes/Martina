@@ -2,71 +2,27 @@ import Link from "next/link"
 const posts = [
     {
         id: 1,
-        title: 'Content',
-        href: '#',
+        title: 'The Expansive Canvas',
+        href: 'https://expansivecanvas.com',
         description:
-            'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
-        date: 'Mar 16, 2020',
-        datetime: '2020-03-16',
-        category: { title: 'Marketing', href: '#' },
-        author: {
-            name: 'Michael Foster',
-            role: 'Co-Founder / CTO',
-            href: '#',
-            imageUrl:
-                'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        },
+            'Presenting a Performance with Discursive Element with pianist David Vesey - RIAM',
+        date: '27th August, 2025'
     },
     {
         id: 2,
-        title: 'Content',
-        href: '#',
-        description: 'Optio cum necessitatibus dolor voluptatum provident commodi et. Qui aperiam fugiat nemo cumque.',
-        date: 'Mar 10, 2020',
-        datetime: '2020-03-10',
-        category: { title: 'Sales', href: '#' },
-        author: {
-            name: 'Lindsay Walton',
-            role: 'Front-end Developer',
-            href: '#',
-            imageUrl:
-                'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        },
+        title: 'Informal Music Afternoon',
+        href: 'https://www.themodel.ie/whats-on/',
+        description: 'Recital with pianists Carmen Ong Romantic French Music',
+        date: '5th October, 2025'
     },
     {
         id: 3,
-        title: 'Content',
-        href: '#',
+        title: 'The Magic Fountain by Frederick Delius',
+        href: 'https://www.wexfordopera.com/programme/festival-programme/the-magic-fountain',
         description:
-            'Cupiditate maiores ullam eveniet adipisci in doloribus nulla minus. Voluptas iusto libero adipisci rem et corporis. Nostrud sint anim sunt aliqua. Nulla eu labore irure incididunt velit cillum quis magna dolore.',
-        date: 'Feb 12, 2020',
-        datetime: '2020-02-12',
-        category: { title: 'Business', href: '#' },
-        author: {
-            name: 'Tom Cook',
-            role: 'Director of Product',
-            href: '#',
-            imageUrl:
-                'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        },
+            'Performing as part of Wexford Festival Opera Orchestra',
+        date: '19, 23, 25 and 31 October, 2025'
     },
-    {
-        id: 4,
-        title: 'Content',
-        href: '#',
-        description:
-            'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
-        date: 'Mar 16, 2020',
-        datetime: '2020-03-16',
-        category: { title: 'Marketing', href: '#' },
-        author: {
-            name: 'Michael Foster',
-            role: 'Co-Founder / CTO',
-            href: '#',
-            imageUrl:
-                'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        },
-    }
 ]
 
 export default function ContentContainerColoured() {
@@ -75,7 +31,7 @@ export default function ContentContainerColoured() {
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <h1 className="text-3xl mt-10 font-bold text-center mt-10 text-gray-700">Past & Upcoming Events</h1>
                 <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 
-                        sm:mt-5 sm:pt-5 lg:mx-0 lg:max-w-none lg:grid-cols-4 gap-4">
+                        sm:mt-5 sm:pt-5 lg:mx-0 lg:max-w-none lg:grid-cols-3 gap-4">
                     {posts.map((post) => (
                         <article
                             key={post.id}
@@ -88,6 +44,7 @@ export default function ContentContainerColoured() {
                                         {post.title}
                                     </Link>
                                 </h3>
+                                <p className="mt-2 text-xs">{post.date}</p>
                                 <p className="mt-5 line-clamp-3 text-sm/6">{post.description}</p>
                             </div>
                         </article>

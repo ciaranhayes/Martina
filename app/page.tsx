@@ -9,7 +9,7 @@ const posts = [
     {
         id: 1,
         title: 'Education',
-        href: '/teaching',
+        href: '/education',
         description:
             'Martina Rosaria O’Connell is an experienced music educator in flute and music theory, dedicated to making music accessible and enjoyable for learners of all ages. She holds a First Class Honours Bachelor of Music Education from Trinity College Dublin and the Royal Irish Academy of Music (RIAM), which included a six-month Erasmus placement at the Royal Conservatoire of Scotland. She also earned a Master’s in Flute Performance from RIAM and Trinity College Dublin, graduating with distinction and achieving the highest result in her year.',
     },
