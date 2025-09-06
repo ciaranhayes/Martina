@@ -5,7 +5,7 @@ const posts = [
         title: 'The Expansive Canvas',
         href: 'https://expansivecanvas.com',
         description:
-            'Presenting a Performance with Discursive Element with pianist David Vesey - RIAM',
+            'Presented a Performance with Discursive Element alongside pianist David Vesey',
         date: '27th August, 2025'
     },
     {
@@ -31,7 +31,7 @@ export default function ContentContainerColoured() {
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <h1 className="text-3xl mt-10 font-bold text-center mt-10 text-gray-700">Past & Upcoming Events</h1>
                 <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 
-                        sm:mt-5 sm:pt-5 lg:mx-0 lg:max-w-none lg:grid-cols-3 gap-4">
+                        sm:mt-10 sm:pt-5 lg:mx-0 lg:max-w-none lg:grid-cols-3 gap-4">
                     {posts.map((post) => (
                         <article
                             key={post.id}

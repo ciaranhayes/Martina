@@ -8,7 +8,7 @@ export default function QuotationBox() {
     return (
         <section className="relative isolate overflow-hidden px-6 py-24 lg:px-8">
             <div className="mx-auto max-w-2xl lg:max-w-4xl">
-                <figure className="relative bg-[#292842] rounded-2xl shadow-lg  border border-gray-200 p-10">
+                <figure className="relative bg-purple rounded shadow-lg  border border-gray-200 p-10">
                     <span className="absolute top-3 left-6 text-6xl text-purple-300 font-serif select-none">“</span>
 
                     <blockquote className="text-center italic text-xl font-medium text-white sm:text-2xl">

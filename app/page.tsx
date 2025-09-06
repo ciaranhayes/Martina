@@ -40,8 +40,8 @@ export default function Page() {
     <>
       <HeaderFront />
       <ContentContainer posts={posts} />
-      <GeneralBio />
       <QuotationBox />
+      <GeneralBio />
       <ContentContainerColoured />
       <Footer />
     </> 

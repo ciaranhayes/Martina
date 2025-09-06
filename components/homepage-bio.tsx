@@ -2,14 +2,14 @@ import Image from "next/image"
 
 export default function GeneralBio() {
     return (
-        <div className="relative isolate overflow-hidden px-6 pt-10 sm:pt-20 lg:overflow-visible lg:px-0 mt-5">
+        <div className="relative isolate overflow-hidden px-6 pt-10 lg:overflow-visible lg:px-0 mt-5">
             <div className="mx-auto">
                 <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-10">
                     <div className="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
                         <div className="lg:pr-4">
                             <div className="p-10 border-l border-purple">
                                 <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty sm:text-5xl text-gray-900">
-                                    About Me
+                                    About Martina Rosaria O&rsquo;Connell 
                                 </h1>
                                 <div className="mt-6 text-xl/8 text-gray-700 space-y-6">
                                     <p>
