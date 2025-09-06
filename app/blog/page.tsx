@@ -1,12 +1,11 @@
 import Header from "@/components/header"
-import Footer from "@/components/footer"
+import ComingSoon from "@/components/coming-soon"
 
 export default function Blog() {
     return (
         <>
             <Header />
-
-            <Footer />
+            <ComingSoon />
         </>
     )
 }

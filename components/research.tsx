@@ -30,7 +30,7 @@ export default function ResearchIntro() {
                     </div>
                     <div className="px-auto p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 flex justify-center align-center">
                         <Image
-                            src="/photo5.jpg"
+                            src="/photo10.jpg"
                             width={1080}
                             height={720}
                             alt="photo of Martina"

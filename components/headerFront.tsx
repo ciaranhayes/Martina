@@ -8,7 +8,7 @@ import Image from 'next/image'
 
 const navigation = [
     { name: <DropDown colour="text-[#EFF0E2]" background="bg-purple" />, href: '#dropdown' },
-    { name: 'Enquiries', href: '/enquiries' },
+    { name: 'Contact', href: '/contact' },
     { name: 'Blog', href: '/blog' },
     { name: 'Resources', href: '/resources' }
 ]
@@ -37,7 +37,7 @@ export default function HeaderFront() {
                         <button
                             type="button"
                             onClick={() => setMobileMenuOpen(true)}
-                            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+                            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[#EFF0E2]"
                         >
                             <span className="sr-only">Open main menu</span>
                             <Bars3Icon aria-hidden="true" className="size-6" />
@@ -69,7 +69,7 @@ export default function HeaderFront() {
                                 <span className="sr-only">Your Company</span>
                                 <Image
                                     alt=""
-                                    src="/logo.svg"
+                                    src="/logo-cream.svg"
                                     className="h-10 w-auto"
                                     width={10}
                                     height={10}
@@ -78,7 +78,7 @@ export default function HeaderFront() {
                             <button
                                 type="button"
                                 onClick={() => setMobileMenuOpen(false)}
-                                className="-m-2.5 rounded-md p-2.5 text-gray-700"
+                                className="-m-2.5 rounded-md p-2.5 text-[#EFF0E2]"
                             >
                                 <span className="sr-only">Close menu</span>
                                 <XMarkIcon aria-hidden="true" className="size-6" />
