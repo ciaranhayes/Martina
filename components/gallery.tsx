@@ -27,9 +27,9 @@ const products = [
 
 export default function Example() {
     return (
-        <div className="mt-30">
+        <div>
             <div className="mx-auto max-w-2xl px-4 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-                <h2 className="text-2xl font-bold tracking-tight text-gray-900 text-center">Photography by Francis Marshall</h2>
+                <h2 className="text-2xl mt-30 font-bold tracking-tight text-gray-900 text-center">Photography by Francis Marshall</h2>
                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-4 xl:gap-x-8">
                     {products.map((product) => (
                         <div key={product.id} className="group relative">
@@ -44,7 +44,7 @@ export default function Example() {
                     ))}
                 </div>
             </div>
-            <main className="flex flex-1 items-center justify-center mt-20 px-6 sm:py-32 lg:px-8">
+            <main className="flex flex-1 items-center justify-center mt-30 px-6 sm:py-32 lg:px-8">
                 <div className="text-center">
                     <p className="text-base font-semibold text-purple">
                         Under Construction
