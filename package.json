@@ -11,6 +11,8 @@
   "dependencies": {
     "@headlessui/react": "^2.2.7",
     "@heroicons/react": "^2.2.0",
+    "@nutrient-sdk/viewer": "^1.6.0",
+    "copy-webpack-plugin": "^13.0.1",
     "next": "15.4.7",
     "react": "19.1.0",
     "react-dom": "19.1.0"
