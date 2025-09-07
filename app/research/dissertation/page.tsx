@@ -5,9 +5,7 @@ import Footer from "@/components/footer"
 export default function Dissertation() {
     return(
     <>
-    <Header />
     <PDf />
-    <Footer />
     </>
     )
 }
