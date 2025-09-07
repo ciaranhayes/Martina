@@ -29,7 +29,7 @@ export default function Example() {
     return (
         <div className="bg-[#EFF0E2]">
             <div className="mx-auto max-w-2xl mt-10 pt-20 px-4 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-                <h2 className="text-2xl font-bold tracking-tight text-gray-900 text-center">Photography by Francis Marshall</h2>
+                <h2 className="text-2xl font-bold tracking-tight text-gray-900 text-center">Photography by Frances Marshall</h2>
                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-4 xl:gap-x-8">
                     {products.map((product) => (
                         <div key={product.id} className="group relative">
