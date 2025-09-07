@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 
 export default function ResearchIntro() {
     return (
@@ -11,7 +12,7 @@ export default function ResearchIntro() {
                                 <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty sm:text-5xl text-gray-900">
                                     Research
                                 </h1>
-                                <h2 className="mt-5 text-xl font-semibold tracking-tight text-pretty text-gray-900">Mel Bonis: Violin Sonata in F-sharp Minor, Op. 112 – Transcription and Research</h2>
+                                <h2 className="mt-5 text-xl font-semibold tracking-tight text-pretty text-gray-900 underline"><Link href="/research/dissertation">Mel Bonis: Violin Sonata in F-sharp Minor, Op. 112 – Transcription and Research</Link></h2>
                                 <div className="mt-6 text-xl/8 text-gray-700 space-y-6">
                                     <p>
                                         As part of her Master&rsquo;s in Music Performance dissertation, completed in
