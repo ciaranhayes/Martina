@@ -48,41 +48,41 @@ export default function Footer() {
                         </svg></a>
                 </div>
             </nav>
-            <div className="flex flex-row items-center gap-4">
+            <div className="flex flex-wrap justify-center gap-4">
                 <Image
                     src="/funding5.png"
                     alt="logo"
                     width={200}
                     height={100}
-                    className="h-auto w-auto"
+                    className="max-w-full h-auto"
                 />
                 <Image
                     src="/funding1.png"
                     alt="logo"
                     width={100}
                     height={100}
-                    className="h-auto w-auto"
+                    className="max-w-full h-auto"
                 />
                 <Image
                     src="/funding2.png"
                     alt="logo"
                     width={200}
                     height={200}
-                    className="h-auto w-auto"
+                    className="max-w-full h-auto"
                 />
                 <Image
                     src="/funding3.png"
                     alt="logo"
                     width={100}
                     height={100}
-                    className="h-auto w-auto"
+                    className="max-w-full h-auto"
                 />
                 <Image
                     src="/funding4.png"
                     alt="logo"
                     width={150}
                     height={150}
-                    className="h-auto w-auto"
+                    className="max-w-full h-auto"
                 />
             </div>
         </footer>
