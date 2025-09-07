@@ -29,7 +29,7 @@ export default function PerformanceIntro() {
                                     </p>
 
                                     <p>
-                                        Martina&apos;s career spans solo, chamber, and orchestral performances. She has performed with the National Symphony Orchestra of Ireland, Irish Baroque Orchestra, Dublin Symphony Orchestra, RIAM Philharmonia, and Esker Festival Orchestra. In addition to her performance career, she teaches Musicianship in the Junior and Adult Divisions of the Royal Irish Academy of Music. She is also the Head of Education at the West Wicklow Chamber Music Festival, Assistant Orchestra Manager of the Irish Baroque Orchestra, and serves on the Board of Directors for the Dublin Youth Orchestra.
+                                        Martina&apos;s career spans solo, chamber, and orchestral performances. She has performed with the National Symphony Orchestra of Ireland, Irish Baroque Orchestra, RTÉ Concert Orchestra, Dublin Symphony Orchestra, RIAM Philharmonia, and Esker Festival Orchestra. In addition to her performance career, she teaches Musicianship in the Junior and Adult Divisions of the Royal Irish Academy of Music. She is also the Head of Education at the West Wicklow Chamber Music Festival, Assistant Orchestra Manager of the Irish Baroque Orchestra, and serves on the Board of Directors for the Dublin Youth Orchestra.
                                     </p>
 
                                     <p>

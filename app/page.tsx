@@ -11,27 +11,27 @@ const posts = [
         title: 'Education',
         href: '/education',
         description:
-            'Martina Rosaria O’Connell is an experienced music educator in flute and music theory, dedicated to making music accessible and enjoyable for learners of all ages. She holds a First Class Honours Bachelor of Music Education from Trinity College Dublin and the Royal Irish Academy of Music (RIAM), which included a six-month Erasmus placement at the Royal Conservatoire of Scotland. She also earned a Master’s in Flute Performance from RIAM and Trinity College Dublin, graduating with distinction and achieving the highest result in her year.',
+            'An award-winning flautist and dedicated music educator with top honours from RIAM and Trinity College Dublin. Bringing world-class training and a passion for inspiring learners of all ages to every lesson',
     },
     {
         id: 2,
         title: 'Performance',
         href: '/performance-flute',
-        description: 'Martina Rosaria O’Connell is a highly accomplished Irish-Italian flautist and music educator. She recently completed her Master’s in Flute Performance with Distinction, graduating top of her class at the Royal Irish Academy of Music. Martina also holds a First-Class Honours degree in Music Education from Trinity College Dublin.',
+        description: 'Recognised with awards including the Trench Award, Arts Council of Ireland’s Agility Award, Culture Ireland, and Music Network’s Music Capital Scheme. Performances span solo, chamber, and orchestral stages across Ireland and Europe, from concerto debuts to international premieres.',
     },
     {
         id: 3,
         title: 'Artistic Management',
         href: '/arts-management',
         description:
-            'Martina has worked with some of Ireland’s leading arts organisations, including the National Symphony Orchestra of Ireland, RTÉ Concert Orchestra, Irish Baroque Orchestra, and the West Wicklow Chamber Music Festival. She is highly organised and professional, with a proven track record in arts management, education programming, and orchestral administration. Known as a reliable and hardworking colleague, Martina consistently delivers projects with creativity, dedication, and attention to detail.',
+            'Experienced in arts management, education programming, and orchestral administration, with roles at the National Symphony Orchestra of Ireland, RTÉ Concert Orchestra, Irish Baroque Orchestra, and the West Wicklow Chamber Music Festival. Known for professionalism and creativity, bringing dedication and attention to detail to every project.',
     },
     {
         id: 4,
         title: 'Academic Research',
         href: '/research',
         description:
-            'As part of my Master’s in Music Performance dissertation, which I completed in 2024 with First Class Honours and graduating top of my class, I focused on Mel Bonis’s Violin Sonata in F-sharp Minor, Op. 112, widely regarded as her most advanced contribution to the sonata repertoire. Composed in 1923, the work demonstrates Bonis’s mastery of large-scale chamber writing, cyclic thematic development, and expressive harmonic language.',
+            'Completed a First Class Honours Master’s in Music Performance with a top-of-class dissertation on Mel Bonis’s Violin Sonata in F-sharp Minor, Op. 112. Produced and premiered a flute and piano transcription in Paris and Ireland, presented research at major international conferences, and contributed to the revival of Bonis’s overlooked repertoire. Further developments will be announced soon.',
     }
 ]
 

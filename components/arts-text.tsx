@@ -1,8 +1,9 @@
 import Image from "next/image"
+import type { ReactNode } from "react"
 
 type Post = {
     title: string
-    description: string
+    description: string | ReactNode
     href: string
 }
 
@@ -16,9 +17,15 @@ export default function WestWicklow({ post }: { post: Post }) {
                             <h1 className="mt-2 text-4xl font-semibold tracking-tight sm:text-5xl text-gray-900">
                                 {post.title}
                             </h1>
-                            <p className="mt-6 text-xl leading-8 text-gray-700">
-                                {post.description}
-                            </p>
+                            {typeof post.description === "string" ? (
+                                <p className="mt-6 text-xl leading-8 text-gray-700">
+                                    {post.description}
+                                </p>
+                            ) : (
+                                <div className="mt-6 text-xl leading-8 text-gray-700">
+                                    {post.description}
+                                </div>
+                            )}
                         </div>
                     </div>
                     <div className="lg:col-span-1 flex justify-center lg:top-10">

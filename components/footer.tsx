@@ -50,6 +50,13 @@ export default function Footer() {
             </nav>
             <div className="flex flex-row items-center gap-4">
                 <Image
+                    src="/funding5.png"
+                    alt="logo"
+                    width={200}
+                    height={100}
+                    className="h-auto w-auto"
+                />
+                <Image
                     src="/funding1.png"
                     alt="logo"
                     width={100}

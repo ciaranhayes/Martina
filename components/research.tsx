@@ -14,15 +14,33 @@ export default function ResearchIntro() {
                                 <h2 className="mt-5 text-xl font-semibold tracking-tight text-pretty text-gray-900">Mel Bonis: Violin Sonata in F-sharp Minor, Op. 112 – Transcription and Research</h2>
                                 <div className="mt-6 text-xl/8 text-gray-700 space-y-6">
                                     <p>
-                                        As part of my Master&rsquo;s in Music Performance dissertation, which I completed in 2024 with First Class Honours and graduating top of my class, I focused on Mel Bonis&rsquo;s Violin Sonata in F-sharp Minor, Op. 112, widely regarded as her most advanced contribution to the sonata repertoire. Composed in 1923, the work demonstrates Bonis&rsquo;s mastery of large-scale chamber writing, cyclic thematic development, and expressive harmonic language.
+                                        As part of her Master&rsquo;s in Music Performance dissertation, completed in
+                                        2024 with First Class Honours and graduating top of her class, Martina
+                                        focused on Mel Bonis&rsquo;s Violin Sonata in F-sharp Minor, Op. 112, widely
+                                        regarded as the composer&rsquo;s most advanced contribution to the sonata
+                                        repertoire. Composed in 1923, the work demonstrates Bonis&rsquo;s mastery of
+                                        large-scale chamber writing, cyclic thematic development, and expressive
+                                        harmonic language.
                                     </p>
 
                                     <p>
-                                        I produced a transcription of the sonata for flute and piano, informed by extensive research, performance practice, and collaborative workshops. The transcription was premiered in Paris (April 2024) and in Ireland (June 2024), with further refinements developed through masterclasses at the Saline Royale Academy under Philippe Bernold and Fuminori Tanada. Editorial adjustments ensured playability and stylistic fidelity, including adaptations for the flute, clarifications of phrasing and articulation, and practical rehearsal guidance.
+                                        Martina produced a transcription of the sonata for flute and piano, informed
+                                        by extensive research, performance practice, and collaborative workshops.
+                                        The transcription was premiered in Paris (April 2024) and in Ireland (June
+                                        2024), with further refinements developed through masterclasses at the Saline
+                                        Royale Academy under Philippe Bernold and Fuminori Tanada. Editorial
+                                        adjustments ensured playability and stylistic fidelity, including adaptations
+                                        for the flute, clarifications of phrasing and articulation, and practical
+                                        rehearsal guidance.
                                     </p>
 
                                     <p>
-                                        I have presented this research at the Expanding Canvas Conference at Trinity College Dublin and the Royal Irish Academy of Music (August 2025), as well as at the 2024 SMI/ICTMD Postgraduate Conference at Maynooth University. This project highlights Bonis&rsquo;s innovative chamber music voice and contributes to the ongoing revival of her neglected but significant repertoire.
+                                        She has presented this research at the Expanding Canvas Conference at Trinity
+                                        College Dublin and the Royal Irish Academy of Music (August 2025), as well as
+                                        at the 2024 SMI/ICTMD Postgraduate Conference at Maynooth University. This
+                                        project highlights Bonis&rsquo;s innovative chamber music voice and
+                                        contributes to the ongoing revival of her neglected but significant
+                                        repertoire. Exciting news to come.
                                     </p>
                                 </div>
                             </div>

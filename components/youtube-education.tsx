@@ -1,6 +1,6 @@
 export default function YouTubeEducation() {
     return (
-        <div className="flex flex-col items-center px-4 mt-10">
+        <div className="flex flex-col items-center px-4 mt-10 mb-20">
             <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 text-center mb-6">
                 RTÉ interview with Martina
             </h2>

@@ -19,7 +19,7 @@ export default function Arts() {
                                     Martina Rosaria O&apos;Connell serves on the Board of Directors of the{" "}
                                     <a
                                         href="https://www.dyo.ie/our-team"
-                                        className="text-gray-600 hover:text-gray-900 hover:underline transition-colors duration-300"
+                                        className="text-gray-600 underline hover:text-gray-900 hover:underline transition-colors duration-300"
                                     >
                                         Dublin Youth Orchestra.
                                     </a>{" "}

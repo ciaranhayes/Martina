@@ -22,14 +22,14 @@ export default function HeaderFront() {
             <header className="text-[#EFF0E2] absolute inset-x-0 top-0 z-50 pb-10">
                 <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
                     <div className="flex lg:flex-1 justify-center">
-                            <span className="sr-only">Your Company</span>
-                            <Image
-                                alt=""
-                                src="/logo-cream.svg"
-                                className="h-10 w-auto"
-                                width={40}
-                                height={40}
-                            />
+                        <span className="sr-only">Your Company</span>
+                        <Image
+                            alt=""
+                            src="/logo-cream.svg"
+                            className="h-10 w-auto"
+                            width={40}
+                            height={40}
+                        />
                     </div>
                     <div className="flex lg:hidden">
                         <button
@@ -103,15 +103,24 @@ export default function HeaderFront() {
                 </Dialog>
             </header>
             <div className="relative isolate px-6 pt-20 lg:px-8">
-                <div className="mx-auto max-w-4xl py-32 sm:py-48 lg:py-56">
+                <div className="mx-auto max-w-4xl sm:max-w-xl py-32 sm:py-48 lg:py-56">
                     <div className="relative text-center">
                         <div className="relative z-10 px-6 py-4">
-                            <h1 className="text-[6.5rem] font-semibold tracking-tight drop-shadow-2xl">
+                            <h1 className="text-[6.5rem] sm:text-xl font-semibold tracking-tight drop-shadow-2xl">
                                 Martina Rosaria O’Connell
                             </h1>
                             <p className="mt-8 text-lg font-medium sm:text-xl/8 drop-shadow-2xl">
                                 Flautist - Educator - Researcher - Arts Management
                             </p>
+                            <div className="mt-6 flex justify-center">
+                                <Image
+                                    alt=""
+                                    src="/logo-cream.svg"
+                                    className="h-50 w-auto"
+                                    width={50}
+                                    height={50}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
