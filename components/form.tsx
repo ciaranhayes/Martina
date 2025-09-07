@@ -10,9 +10,11 @@ export default function Form() {
                         <p className="mt-2 text-base">
                             For event bookings or to schedule flute/musicianship lessons, please contact me at the details below.
                         </p>
-                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5">
-                            <Link href="mailto:martinarosariaoconnell@gmail.com">Email Me</Link>
+                        <Link href="mailto:martinarosariaoconnell@gmail.com">
+                        <button className="bg-[#EFF0E2] text-purple font-bold py-2 px-4 rounded mt-5">
+                            Email Me
                         </button>
+                        </Link>
                         <p className="mt-2 text-base">martinarosariaoconnell@gmail.com</p>
                         <nav className="flex justify-center gap-4 max-w-xs mx-auto mt-10">
                                 <a href="https://www.facebook.com/profile.php?id=100009726851505">
