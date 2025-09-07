@@ -103,12 +103,14 @@ export default function HeaderFront() {
                 </Dialog>
             </header>
             <div className="relative isolate px-6 pt-20 lg:px-8">
-                <div className="mx-auto max-w-2xl sm:max-w-xl py-32 sm:py-48 lg:py-56">
+                <div className="mx-auto sm:max-w-xl py-32 sm:py-48 lg:py-56">
                     <div className="relative text-center">
                         <div className="relative z-10 px-6 py-4">
-                            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight drop-shadow-2xl">
-                                Martina Rosaria O’Connell
+                            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight drop-shadow-2xl text-center leading-tight">
+                                Martina Rosaria<br />
+                                O&rsquo;Connell
                             </h1>
+
                             <p className="mt-8 text-lg font-medium sm:text-xl/8 drop-shadow-2xl">
                                 Flautist - Educator - Researcher - Arts Management
                             </p>
@@ -116,7 +118,7 @@ export default function HeaderFront() {
                                 <Image
                                     alt=""
                                     src="/logo-cream.svg"
-                                    className="h-50 w-auto"
+                                    className="h-40 w-auto"
                                     width={50}
                                     height={50}
                                 />
