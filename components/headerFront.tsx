@@ -103,7 +103,7 @@ export default function HeaderFront() {
                 </Dialog>
             </header>
             <div className="relative isolate px-6 pt-20 lg:px-8">
-                <div className="mx-auto max-w-4xl sm:max-w-xl py-32 sm:py-48 lg:py-56">
+                <div className="mx-auto max-w-2xl sm:max-w-xl py-32 sm:py-48 lg:py-56">
                     <div className="relative text-center">
                         <div className="relative z-10 px-6 py-4">
                             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight drop-shadow-2xl">
