@@ -11,7 +11,7 @@ export default function PhotoOnRight() {
                                 <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty sm:text-5xl text-gray-900">
                                     Education
                                 </h1>
-                                <div className="mt-6 text-xl/8 text-gray-700 space-y-6">
+                                <div className="mt-6 text-xl/8 text-gray-700 space-y-6 sm:text-sm">
                                     <p>
                                         Martina Rosaria O&apos;Connell is an experienced music educator in flute and music theory, dedicated to making music accessible and enjoyable for learners of all ages.
                                         She holds a First Class Honours Bachelor of Music Education from Trinity College Dublin and the Royal Irish Academy of Music (RIAM), which included a six-month Erasmus placement at the Royal Conservatoire of Scotland. She also earned a Master&apos;s in Flute Performance from RIAM and Trinity College Dublin, graduating with distinction and achieving the highest result in her year.
