@@ -21,7 +21,7 @@ export default function ImageDropZone() {
 
             console.log("Uploaded image URL:", fileUrl);
 
-            await fetch("http://localhost:5173/uploads", {
+            await fetch("https://martina-api-rryn.vercel.app/uploads", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ fileUrl, fileName }),
@@ -54,7 +54,7 @@ export default function ImageDropZone() {
     });
 
     return (
-        <div className='min-h-screen p-8'>
+        <div className='h-screen p-8 overflow-y-auto'>
             <div className='max-w-4xl mx-auto space-y-6'>
                 <h1 className='text-3xl font-bold text-purple'>Image Upload</h1>
 
@@ -85,7 +85,7 @@ export default function ImageDropZone() {
                     </button>
                 )}
             </div>
-            <div className='w-full'>
+            <div className='w-full mt-20'>
                 <ViewUploadedImages />
             </div>
         </div>

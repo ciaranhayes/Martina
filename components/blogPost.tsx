@@ -47,9 +47,15 @@ export default function BlogDetail() {
                 </span>
 
                 <div className="prose max-w-none mt-4 text-gray-900">
-                    {post.text.split("\n").map((paragraph, index) => (
-                        <p key={index} className='p-1.5'>{paragraph}</p>
-                    ))}
+                    {post.text
+                        .replace(/\\n/g, '\n')
+                        .split('\n')
+                        .filter(line => line.trim() !== '')
+                        .map((paragraph, index) => (
+                            <p key={index} className="p-1.5">
+                                {paragraph.trim()}
+                            </p>
+                        ))}
                 </div>
             </div>
         </div>

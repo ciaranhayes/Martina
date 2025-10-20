@@ -14,21 +14,27 @@ export default function ViewUploadedImages() {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState("")
 
-    useEffect(() => {
-        const fetchImages = async () => {
-            try {
-                const res = await fetch("http://localhost:5173/uploads")
-                if (!res.ok) throw new Error("Failed to fetch images")
-                const data = await res.json()
-                setImages(data)
-            } catch (err: any) {
-                setError(err.message || "An error occurred")
-            } finally {
-                setLoading(false)
-            }
+    const fetchImages = async () => {
+        try {
+            const res = await fetch("https://martina-api-rryn.vercel.app/uploads", {
+                cache: "no-store",
+            })
+            if (!res.ok) throw new Error("Failed to fetch images")
+            const data = await res.json()
+            setImages(data)
+        } catch (err: any) {
+            setError(err.message || "An error occurred")
+        } finally {
+            setLoading(false)
         }
+    }
 
+    useEffect(() => {
         fetchImages()
+
+        const interval = setInterval(fetchImages, 10000)
+
+        return () => clearInterval(interval)
     }, [])
 
     if (loading) {
