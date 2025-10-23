@@ -1,6 +1,7 @@
 "use client"
 import Image from "next/image"
 import { useState, useEffect } from "react";
+import TextSkeleton from "./loading";
 
 interface Bio {
     _id: string
@@ -11,6 +12,7 @@ interface Bio {
 
 export default function PhotoOnRight() {
     const [bio, setBio] = useState<Bio | null>(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetchBios() {
@@ -24,6 +26,7 @@ export default function PhotoOnRight() {
             }
         }
         fetchBios();
+        setLoading(false);
     }, []);
 
     return (
@@ -56,17 +59,20 @@ export default function PhotoOnRight() {
                                         Her teaching blends formal training with a commitment to inclusive, creative, and inspiring learning experiences, ensuring that music can be enjoyed by all—regardless of age, ability, or background.
                                     </p>
                                 </div> */}
-                                <div className="mt-6 text-xl/8 text-gray-700 space-y-6 sm:text-sm">
-                                    {bio?.text
-                                        ?.replace(/\\n/g, "\n")
-                                        .split("\n")
-                                        .filter(line => line.trim() !== "")
-                                        .map((paragraph, index) => (
-                                            <p key={index}>
-                                                {paragraph.trim()}
-                                            </p>
-                                        ))}
-                                </div>
+                                {loading ? (
+                                    <TextSkeleton />
+                                ) : (
+                                    <div className="mt-6 text-xl/8 text-gray-700 space-y-6 sm:text-sm">
+                                        {bio?.text
+                                            ?.replace(/\\n/g, "\n")
+                                            .split("\n")
+                                            .filter(line => line.trim() !== "")
+                                            .map((paragraph, index) => (
+                                                <p key={index}>
+                                                    {paragraph.trim()}
+                                                </p>
+                                            ))}
+                                    </div> )}
                             </div>
                         </div>
                     </div>

@@ -1,9 +1,10 @@
 "use client"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import MyEditor from "@/components/editor-look"
 import EventEditor from "@/components/editEvents"
 import ImageDropZone from "@/components/image-uploader"
+import EditBios from "@/components/editingBio"
+import EditYoutubeLinks from "@/components/youtubeChanging"
 
 interface BlogPost {
     _id: string
@@ -25,7 +26,7 @@ export default function EditorPage() {
     const [category, setCategory] = useState("")
     const [text, setText] = useState("")
     const [message, setMessage] = useState("")
-    const [tab, setTab] = useState<"add" | "edit" | "delete" | "event" | "image">("add");
+    const [tab, setTab] = useState<"add" | "edit" | "delete" | "event" | "image" | "bio" | "youtube">("add");
     const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null)
 
     useEffect(() => {
@@ -132,6 +133,8 @@ export default function EditorPage() {
         <div className="w-screen h-screen flex flex-col items-center justify-start pt-24 px-4">
             {/* Tabs */}
             <div className="absolute inset-x-0 top-2 z-50 p-4 shadow-md flex justify-center gap-4">
+                <button className="px-4 py-2 bg-purple text-white rounded hover:bg-purple-900" onClick={() => setTab("bio")}>Bios</button>
+                <button className="px-4 py-2 bg-purple text-white rounded hover:bg-purple-900" onClick={() => setTab("youtube")}>Youtube</button>
                 <button className="px-4 py-2 bg-purple text-white rounded hover:bg-purple-900" onClick={() => setTab("image")}>Image</button>
                 <button className="px-4 py-2 bg-purple text-white rounded hover:bg-purple-900" onClick={() => setTab("event")}>Events</button>
                 <button className="px-4 py-2 bg-purple text-white rounded hover:bg-purple-900" onClick={() => setTab("add")}>Add</button>
@@ -139,6 +142,12 @@ export default function EditorPage() {
                 <button className="px-4 py-2 bg-purple text-white rounded hover:bg-purple-900" onClick={() => setTab("delete")}>Delete</button>
                 <button className="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-900" onClick={handleLogout}>Logout</button>
             </div>
+
+            {/* Youtube tab */}
+            {tab === "youtube" && (<EditYoutubeLinks />)}
+
+            {/* Bio tab */}
+            {tab === "bio" && (<EditBios />)}
 
             {/* {Image tab} */}
             {tab === "image" && (<ImageDropZone />)}

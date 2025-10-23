@@ -1,6 +1,32 @@
+"use client"
 import Image from "next/image"
+import { useState, useEffect } from "react"
+
+interface Bio {
+    _id: string
+    title: string
+    category: string
+    text: string
+}
 
 export default function Arts() {
+    const [bio, setBio] = useState<Bio | null>(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function fetchBios() {
+            try {
+                const res = await fetch("https://martina-api-rryn.vercel.app/bios/68fa74110758685b9f374fde"); // GET request
+                if (!res.ok) throw new Error("Failed to fetch bios");
+                const data = await res.json();
+                setBio(data);
+            } catch (err) {
+                console.error(err);
+            }
+        }
+        fetchBios();
+        setLoading(false);
+    }, []);
     return (
         <div className="relative isolate overflow-hidden px-6 pt-32 pb-20 lg:overflow-visible lg:px-0 mt-5">
             <div className="mx-auto">
@@ -11,9 +37,18 @@ export default function Arts() {
                                 <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty sm:text-5xl text-gray-900">
                                     Arts Management
                                 </h1>
-                                <p className="mt-6 text-xl/8 text-gray-700 space-y-6">
+                                {/* <p className="mt-6 text-xl/8 text-gray-700 space-y-6">
                                     Martina has worked with some of Ireland&apos;s leading arts organisations, including the National Symphony Orchestra of Ireland, RT&Eacute; Concert Orchestra, Irish Baroque Orchestra, and the West Wicklow Chamber Music Festival. She is highly organised and professional, with a proven track record in arts management, education programming, and orchestral administration. Known as a reliable and hardworking colleague, Martina consistently delivers projects with creativity, dedication, and attention to detail.
-                                </p>
+                                </p> */}
+                                    {bio?.text
+                                        ?.replace(/\\n/g, "\n")
+                                        .split("\n")
+                                        .filter(line => line.trim() !== "")
+                                        .map((paragraph, index) => (
+                                            <p key={index} className="mt-6 text-xl/8 text-gray-700 space-y-6">
+                                                {paragraph.trim()}
+                                            </p>
+                                        ))}
                                 <h2 className="mt-6 text-xl font-semibold tracking-tight text-pretty text-gray-900">Board Work</h2>
                                 <p className="mt-2 text-xl/8 text-gray-700 space-y-6">
                                     Martina Rosaria O&apos;Connell serves on the Board of Directors of the{" "}
