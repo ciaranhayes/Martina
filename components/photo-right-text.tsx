@@ -1,6 +1,34 @@
+"use client"
 import Image from "next/image"
+import { useState, useEffect } from "react";
+import TextSkeleton from "./loading";
+
+interface Bio {
+    _id: string
+    title: string
+    category: string
+    text: string
+}
 
 export default function PhotoOnRight() {
+    const [bio, setBio] = useState<Bio | null>(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function fetchBios() {
+            try {
+                const res = await fetch("https://martina-api-rryn.vercel.app/bios/68f65eb8b4eaf2f2effdccb5"); // GET request
+                if (!res.ok) throw new Error("Failed to fetch bios");
+                const data = await res.json();
+                setBio(data);
+            } catch (err) {
+                console.error(err);
+            }
+        }
+        fetchBios();
+        setLoading(false);
+    }, []);
+
     return (
         <div className="relative isolate overflow-hidden px-6 pt-24 sm:pt-32 lg:overflow-visible lg:px-0 mt-5">
             <div className="mx-auto">
@@ -11,7 +39,7 @@ export default function PhotoOnRight() {
                                 <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty sm:text-5xl text-gray-900">
                                     Education
                                 </h1>
-                                <div className="mt-6 text-xl/8 text-gray-700 space-y-6 sm:text-sm">
+                                {/* <div className="mt-6 text-xl/8 text-gray-700 space-y-6 sm:text-sm">
                                     <p>
                                         Martina Rosaria O&apos;Connell is an experienced music educator in flute and music theory, dedicated to making music accessible and enjoyable for learners of all ages.
                                         She holds a First Class Honours Bachelor of Music Education from Trinity College Dublin and the Royal Irish Academy of Music (RIAM), which included a six-month Erasmus placement at the Royal Conservatoire of Scotland. She also earned a Master&apos;s in Flute Performance from RIAM and Trinity College Dublin, graduating with distinction and achieving the highest result in her year.
@@ -30,7 +58,21 @@ export default function PhotoOnRight() {
                                         Martina also runs a private flute studio, offering biweekly lessons that focus on developing strong technical skills, musicianship, and a rich, personal sound.
                                         Her teaching blends formal training with a commitment to inclusive, creative, and inspiring learning experiences, ensuring that music can be enjoyed by all—regardless of age, ability, or background.
                                     </p>
-                                </div>
+                                </div> */}
+                                {loading ? (
+                                    <TextSkeleton />
+                                ) : (
+                                    <div className="mt-6 text-xl/8 text-gray-700 space-y-6 sm:text-sm">
+                                        {bio?.text
+                                            ?.replace(/\\n/g, "\n")
+                                            .split("\n")
+                                            .filter(line => line.trim() !== "")
+                                            .map((paragraph, index) => (
+                                                <p key={index}>
+                                                    {paragraph.trim()}
+                                                </p>
+                                            ))}
+                                    </div> )}
                             </div>
                         </div>
                     </div>

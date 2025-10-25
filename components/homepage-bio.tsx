@@ -1,6 +1,31 @@
+"use client"
 import Image from "next/image"
+import { useState, useEffect } from "react"
+
+interface Bio {
+    _id: string
+    title: string
+    category: string
+    text: string
+}
 
 export default function GeneralBio() {
+    const [bio, setBio] = useState<Bio | null>(null);
+
+    useEffect(() => {
+        async function fetchBios() {
+            try {
+                const res = await fetch("https://martina-api-rryn.vercel.app/bios/68fa76b34409811a846f8a7e"); // GET request
+                if (!res.ok) throw new Error("Failed to fetch bios");
+                const data = await res.json();
+                setBio(data);
+            } catch (err) {
+                console.error(err);
+            }
+        }
+        fetchBios();
+    }, []);
+
     return (
         <div className="relative isolate overflow-hidden px-6 pt-10 lg:overflow-visible lg:px-0 mt-5">
             <div className="mx-auto">
@@ -9,10 +34,10 @@ export default function GeneralBio() {
                         <div className="lg:pr-4">
                             <div className="p-10 border-l border-purple">
                                 <h1 className="mt-2 text-4xl font-semibold tracking-tight text-pretty sm:text-5xl text-gray-900">
-                                    About Martina Rosaria O&rsquo;Connell 
+                                    About Martina Rosaria O&rsquo;Connell
                                 </h1>
                                 <div className="mt-6 text-xl/8 text-gray-700 space-y-6">
-                                    <p>
+                                    {/* <p>
                                         Martina Rosaria O&rsquo;Connell is a highly accomplished Irish-Italian flautist, music educator, and arts professional, dedicated to making music accessible, inspiring, and enjoyable for learners of all ages. She holds a First-Class Honours Bachelor of Music Education from Trinity College Dublin and the Royal Irish Academy of Music (RIAM), and a Master&rsquo;s in Flute Performance with Distinction, graduating top of her class.
                                     </p>
 
@@ -30,7 +55,17 @@ export default function GeneralBio() {
 
                                     <p>
                                         Her work reflects a commitment to excellence, inclusivity, and inspiring others through both performance and teaching, establishing her as one of Ireland&rsquo;s leading emerging musicians.
-                                    </p>
+                                    </p> */}
+
+                                    {bio?.text
+                                        ?.replace(/\\n/g, "\n")
+                                        .split("\n")
+                                        .filter(line => line.trim() !== "")
+                                        .map((paragraph, index) => (
+                                            <p key={index} className="mt-6 text-xl/8 text-gray-700 space-y-6">
+                                                {paragraph.trim()}
+                                            </p>
+                                        ))}
                                 </div>
                             </div>
                         </div>

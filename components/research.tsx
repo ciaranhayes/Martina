@@ -1,7 +1,32 @@
+"use client"
 import Image from "next/image"
 import Link from "next/link"
+import { useState, useEffect } from "react"
+
+interface Bio {
+    _id: string
+    title: string
+    category: string
+    text: string
+}
 
 export default function ResearchIntro() {
+    const [bio, setBio] = useState<Bio | null>(null);
+
+    useEffect(() => {
+        async function fetchBios() {
+            try {
+                const res = await fetch("https://martina-api-rryn.vercel.app/bios/68f6b3daf658159fe6f275d2"); // GET request
+                if (!res.ok) throw new Error("Failed to fetch bios");
+                const data = await res.json();
+                setBio(data);
+            } catch (err) {
+                console.error(err);
+            }
+        }
+        fetchBios();
+    }, []);
+
     return (
         <div className="relative isolate overflow-hidden px-6 pt-32 pb-20 lg:overflow-visible lg:px-0 mt-5">
             <div className="mx-auto">
@@ -14,7 +39,7 @@ export default function ResearchIntro() {
                                 </h1>
                                 <h2 className="mt-5 text-xl font-semibold tracking-tight text-pretty text-gray-900 underline"><Link href="/research/dissertation">Mel Bonis: Violin Sonata in F-sharp Minor, Op. 112 – Transcription and Research</Link></h2>
                                 <div className="mt-6 text-xl/8 text-gray-700 space-y-6">
-                                    <p>
+                                    {/* <p>
                                         As part of her Master&rsquo;s in Music Performance dissertation, completed in
                                         2024 with First Class Honours and graduating top of her class, Martina
                                         focused on Mel Bonis&rsquo;s Violin Sonata in F-sharp Minor, Op. 112, widely
@@ -42,7 +67,16 @@ export default function ResearchIntro() {
                                         project highlights Bonis&rsquo;s innovative chamber music voice and
                                         contributes to the ongoing revival of her neglected but significant
                                         repertoire. Exciting news to come.
-                                    </p>
+                                    </p> */}
+                                    {bio?.text
+                                        ?.replace(/\\n/g, "\n")
+                                        .split("\n")
+                                        .filter(line => line.trim() !== "")
+                                        .map((paragraph, index) => (
+                                            <p key={index}>
+                                                {paragraph.trim()}
+                                            </p>
+                                        ))}
                                 </div>
                             </div>
                         </div>

@@ -1,6 +1,31 @@
+"use client"
 import Image from "next/image"
+import { useState, useEffect } from "react"
+
+interface Bio {
+    _id: string
+    title: string
+    category: string
+    text: string
+}
 
 export default function PerformanceIntro() {
+    const [bio, setBio] = useState<Bio | null>(null);
+    
+        useEffect(() => {
+            async function fetchBios() {
+                try {
+                    const res = await fetch("https://martina-api-rryn.vercel.app/bios/68f664b3ab74e3c574727166"); // GET request
+                    if (!res.ok) throw new Error("Failed to fetch bios");
+                    const data = await res.json();
+                    setBio(data);
+                } catch (err) {
+                    console.error(err);
+                }
+            }
+            fetchBios();
+        }, []);
+
     return (
         <div className="relative isolate overflow-hidden px-6 pt-24 sm:pt-32 lg:overflow-visible lg:px-0 mt-5">
             <div className="mx-auto">
@@ -12,7 +37,7 @@ export default function PerformanceIntro() {
                                     Performance
                                 </h1>
                                 <div className="mt-6 text-xl/8 text-gray-700 space-y-6">
-                                    <p>
+                                    {/* <p>
                                         Martina Rosaria O&apos;Connell is a highly accomplished Irish-Italian flautist and music educator. She recently completed her Master&apos;s in Flute Performance with Distinction, graduating top of her class at the Royal Irish Academy of Music. Martina also holds a First-Class Honours degree in Music Education from Trinity College Dublin.
                                     </p>
 
@@ -34,7 +59,16 @@ export default function PerformanceIntro() {
 
                                     <p>
                                         Martina is deeply passionate about sharing her love of music through her performances and her work as an educator. Her dedication, artistry, and versatility reflect her commitment to inspiring others and establishing herself as a prominent voice among Ireland&apos;s emerging musicians.
-                                    </p>
+                                    </p> */}
+                                    {bio?.text
+                                        ?.replace(/\\n/g, "\n")
+                                        .split("\n")
+                                        .filter(line => line.trim() !== "")
+                                        .map((paragraph, index) => (
+                                            <p key={index}>
+                                                {paragraph.trim()}
+                                            </p>
+                                        ))}
                                 </div>
                             </div>
                         </div>

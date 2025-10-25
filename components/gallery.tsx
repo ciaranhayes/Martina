@@ -1,37 +1,77 @@
+"use client"
 import Image from "next/image"
 import Footer from "./footer"
-import Link from "next/link"
+// import Link from "next/link"
+import FreeResources from "./freeResources"
+import { useState, useEffect } from "react"
+import SectionRenderer from "./sectionRender"
 
-const products = [
+const photos = [
     {
         id: 1,
         imageSrc: '/photo1.jpg',
-        imageAlt: "Front of men's Basic Tee in black.",
+        imageAlt: "Photo",
     },
     {
         id: 2,
         imageSrc: '/photo5.jpg',
-        imageAlt: "Front of men's Basic Tee in white.",
+        imageAlt: "Photo",
     },
     {
         id: 3,
         imageSrc: '/photo7.jpg',
-        imageAlt: "Front of men's Basic Tee in dark gray.",
+        imageAlt: "Photo",
     },
     {
         id: 4,
         imageSrc: '/photo10.jpg',
-        imageAlt: "Front of men's Artwork Tee in peach with white and brown dots forming an isometric cube.",
+        imageAlt: "Photo",
     },
 ]
 
-export default function Example() {
+interface Section {
+    _id: string;
+    title: string;
+    text? : string;
+    imageSrc: string[];
+    type: string;
+}
+
+export default function Gallery() {
+
+
+    const [sections, setSections] = useState<Section[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+
+    useEffect(() => {
+        async function fetchSections() {
+            try {
+                const res = await fetch("https://martina-api-rryn.vercel.app/section");
+                if (!res.ok) throw new Error("Failed to fetch sections");
+                const data: Section[] = await res.json();
+                setSections(data);
+            } catch (err) {
+                console.error(err);
+                setError("An error occurred while fetching sections.");
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        fetchSections();
+    }, []);
+
+    if (loading) {
+        return <p className="text-center text-purple mt-10">Loading sections...</p>;
+    }
+
     return (
         <div className="bg-[#EFF0E2]">
             <div className="mx-auto max-w-2xl mt-10 pt-20 px-4 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
                 <h2 className="text-2xl font-bold tracking-tight text-gray-900 text-center">Photography by Frances Marshall</h2>
                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-4 xl:gap-x-8">
-                    {products.map((product) => (
+                    {photos.map((product) => (
                         <div key={product.id} className="group relative">
                             <Image
                                 alt={product.imageAlt}
@@ -44,7 +84,7 @@ export default function Example() {
                     ))}
                 </div>
             </div>
-            <main className="flex flex-1 items-center justify-center mt-30 px-6 sm:py-32 lg:px-8">
+            {/* <main className="flex flex-1 items-center justify-center mt-30 px-6 sm:py-32 lg:px-8">
                 <div className="text-center">
                     <p className="text-base font-semibold text-purple">
                         Under Construction
@@ -61,7 +101,19 @@ export default function Example() {
                         </Link>
                     </div>
                 </div>
-            </main>
+            </main> */}
+            <FreeResources />
+
+            {sections.map((sec) => (
+                <SectionRenderer
+                    key={sec._id}
+                    title={sec.title}
+                    text={sec.text}
+                    imageSrc={sec.imageSrc}
+                    type={sec.type}
+                />
+            ))}
+
             <Footer />
         </div>
     )

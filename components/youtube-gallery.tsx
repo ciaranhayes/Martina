@@ -1,25 +1,56 @@
-import React from "react";
+"use client"
+import React, { useEffect, useState } from "react";
 
-
-const videos = [
-    "https://www.youtube.com/watch?v=iDmAsZVgeOA&list=RDiDmAsZVgeOA&start_radio=1",
-    "https://www.youtube.com/watch?v=v7Vu2wN3h2Q",
-    "https://youtu.be/Lxk6Y0awYmY",
-]
+interface Youtube {
+    _id: string;
+    category: string;
+    description: string;
+    url: string;
+}
 
 export default function YouTubeGallery() {
+    const [videos, setVideos] = useState<Youtube[]>([]);
+
+    useEffect(() => {
+        async function fetchVideos() {
+            try {
+                const res = await fetch("https://martina-api-rryn.vercel.app/youtube");
+                if (!res.ok) throw new Error("Failed to fetch videos");
+                const data: Youtube[] = await res.json();
+
+                // Only include category === "performance"
+                const performanceVideos = data.filter(
+                    (video) => video.category.toLowerCase() === "performance"
+                );
+
+                setVideos(performanceVideos);
+            } catch (err) {
+                console.error(err);
+            }
+        }
+        fetchVideos();
+    }, []);
+
+    // Convert URLs into embeddable format
+    const getEmbedUrl = (url: string) => {
+        if (url.includes("watch?v=")) {
+            return url.replace("watch?v=", "embed/");
+        }
+        if (url.includes("youtu.be/")) {
+            return url.replace("youtu.be/", "www.youtube.com/embed/");
+        }
+        return url;
+    };
+
     return (
         <div className="mt-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {videos.map((video, index) => {
-                    const videoId =
-                        video.split("v=")?.[1]?.split("&")[0] ||
-                        video.split("/").pop();
-                    const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+                    const embedUrl = getEmbedUrl(video.url);
 
                     return (
                         <div
-                            key={index}
+                            key={video._id || index}
                             className="flex flex-col items-center w-full max-w-md mx-auto"
                         >
                             <div className="w-full aspect-video rounded-xl shadow-lg overflow-hidden">
