@@ -55,6 +55,21 @@ export default function BlogDetail() {
                         .split('\n')
                         .filter(line => line.trim() !== '')
                         .map((paragraph, index) => {
+                            // Detect heading syntax first
+                            const headingMatch = paragraph.match(/^\[heading:\s*(.*?)\s*\]$/i)
+                            if (headingMatch) {
+                                const headingText = headingMatch[1]
+                                return (
+                                    <h2
+                                        key={`heading-${index}`}
+                                        className="mt-6 text-xl font-semibold tracking-tight text-pretty text-gray-900"
+                                    >
+                                        {headingText}
+                                    </h2>
+                                )
+                            }
+
+                            // Otherwise treat it as a normal paragraph (with links)
                             const parts: React.ReactNode[] = []
                             let lastIndex = 0
                             const regex = /\[link:\s*(https?:\/\/[^\s|]+)\s*\|\s*([^\]]+)\]/gi

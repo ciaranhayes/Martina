@@ -6,6 +6,7 @@ import ImageDropZone from "@/components/image-uploader"
 import EditBios from "@/components/editingBio"
 import EditYoutubeLinks from "@/components/youtubeChanging"
 import FreeResourcesEditor from "@/components/resourcesEditing"
+import SectionsEditor from "@/components/sectionEdit"
 
 interface BlogPost {
     _id: string
@@ -27,7 +28,7 @@ export default function EditorPage() {
     const [category, setCategory] = useState("")
     const [text, setText] = useState("")
     const [message, setMessage] = useState("")
-    const [tab, setTab] = useState<"add" | "edit" | "delete" | "event" | "image" | "bio" | "youtube" | "resources">("add");
+    const [tab, setTab] = useState<"add" | "edit" | "delete" | "event" | "image" | "bio" | "youtube" | "resources" | "sections">("add");
     const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null)
 
     useEffect(() => {
@@ -142,8 +143,12 @@ export default function EditorPage() {
                 <button className="px-4 py-2 bg-purple text-white rounded hover:bg-purple-900" onClick={() => setTab("edit")}>Edit</button>
                 <button className="px-4 py-2 bg-purple text-white rounded hover:bg-purple-900" onClick={() => setTab("delete")}>Delete</button>
                 <button className="px-4 py-2 bg-purple text-white rounded hover:bg-purple-900" onClick={() => setTab("resources")}>Resources</button>
+                <button className="px-4 py-2 bg-purple text-white rounded hover:bg-purple-900" onClick={() => setTab("sections")}>Sections</button>
                 <button className="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-900" onClick={handleLogout}>Logout</button>
             </div>
+
+            {/* sections tabs */}
+            {tab === "sections" && (<SectionsEditor />)}
 
             {/* Resources tab */}
             {tab === "resources" && (<FreeResourcesEditor />)}
@@ -176,6 +181,7 @@ export default function EditorPage() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-purple font-semibold hover:underline">my favourite video on the internet</a> </h2>
+                        <h2 className="text-lg text-gray-700 mb-6">For smaller headings use format [heading: insert heading text]</h2>
 
                     <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto space-y-4 pr-2">
                         <input

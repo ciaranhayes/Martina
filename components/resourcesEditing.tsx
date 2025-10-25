@@ -8,6 +8,7 @@ interface Resource {
     url: string;
     imageSrc: string;
     description: string;
+    type: boolean; // true = paid, false = free
 }
 
 export default function FreeResourcesEditor() {
@@ -17,10 +18,11 @@ export default function FreeResourcesEditor() {
     const [url, setUrl] = useState("");
     const [imageSrc, setImageSrc] = useState("");
     const [description, setDescription] = useState("");
+    const [type, setType] = useState(false); // false = free
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
-    // ✅ Fetch all resources
+    // Fetch all resources
     useEffect(() => {
         async function fetchResources() {
             setLoading(true);
@@ -29,8 +31,8 @@ export default function FreeResourcesEditor() {
                 if (!res.ok) throw new Error("Failed to fetch resources");
                 const data = await res.json();
                 setResources(data);
-            } catch (err: any) {
-                setError(err.message);
+            } catch (err) {
+                setError(`${err}`);
             } finally {
                 setLoading(false);
             }
@@ -38,7 +40,7 @@ export default function FreeResourcesEditor() {
         fetchResources();
     }, []);
 
-    // ✅ Handle add or update
+    // Add or update resource
     async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
         if (!name || !url || !imageSrc || !description) {
@@ -55,7 +57,7 @@ export default function FreeResourcesEditor() {
             const res = await fetch(endpoint, {
                 method,
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ name, url, imageSrc, description }),
+                body: JSON.stringify({ name, url, imageSrc, description, type }),
             });
 
             if (!res.ok) throw new Error("Failed to save resource");
@@ -71,13 +73,14 @@ export default function FreeResourcesEditor() {
             setUrl("");
             setImageSrc("");
             setDescription("");
+            setType(false);
         } catch (err) {
             console.error(err);
-            alert("Error saving resource");
+            alert("Failed to save resource");
         }
     }
 
-    // ✅ Handle delete
+    // Delete resource
     async function handleDelete(id: string) {
         if (!confirm("Are you sure you want to delete this resource?")) return;
         try {
@@ -91,20 +94,21 @@ export default function FreeResourcesEditor() {
         }
     }
 
-    // ✅ When editing
+    // Edit resource
     function handleEdit(resource: Resource) {
         setSelected(resource);
         setName(resource.name);
         setUrl(resource.url);
         setImageSrc(resource.imageSrc);
         setDescription(resource.description);
+        setType(resource.type);
     }
 
     return (
         <div className="p-6 rounded-lg shadow-lg w-full max-w-5xl h-full overflow-hidden flex flex-col">
-            <h1 className="text-2xl font-bold text-purple mb-4">🎵 Manage Free Resources</h1>
+            <h1 className="text-2xl font-bold text-purple mb-4">🎵 Manage Free & Paid Resources</h1>
 
-            {/* Scrollable list of resources */}
+            {/* Scrollable list */}
             <div className="flex-1 overflow-y-auto pr-2">
                 {loading && <p>Loading resources...</p>}
                 {error && <p className="text-red-600">{error}</p>}
@@ -117,7 +121,13 @@ export default function FreeResourcesEditor() {
                             >
                                 <div className="flex justify-between items-start">
                                     <div>
-                                        <span className="text-purple font-bold">{res.name}</span>
+                                        <span className="text-purple font-bold">{res.name}</span>{" "}
+                                        <span
+                                            className={`ml-2 px-2 py-0.5 rounded text-xs ${res.type ? "bg-red-200 text-red-800" : "bg-green-200 text-green-800"
+                                                }`}
+                                        >
+                                            {res.type ? "Paid" : "Free"}
+                                        </span>
                                         <p className="text-gray-800 text-sm mt-1">{res.description}</p>
                                         <a
                                             href={res.url}
@@ -154,10 +164,10 @@ export default function FreeResourcesEditor() {
                 )}
             </div>
 
-            {/* Add/Edit form */}
+            {/* Add/Edit Form */}
             <form
                 onSubmit={handleSubmit}
-                className="mt-6 border-t border-gray-300 pt-4 flex flex-col gap-3"
+                className="mt-6 border-t border-gray-300 pt-4 flex flex-col gap-3 text-gray-900"
             >
                 <h2 className="text-lg font-semibold text-gray-800">
                     {selected ? "Edit Resource" : "Add New Resource"}
@@ -172,14 +182,14 @@ export default function FreeResourcesEditor() {
                 />
                 <input
                     type="text"
-                    placeholder="URL (e.g. use google docs viewer mode shareable link)"
+                    placeholder="URL"
                     className="border p-2 rounded w-full"
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
                 />
                 <input
                     type="text"
-                    placeholder="Image Source (use from uploadthings)"
+                    placeholder="Image Source"
                     className="border p-2 rounded w-full"
                     value={imageSrc}
                     onChange={(e) => setImageSrc(e.target.value)}
@@ -191,7 +201,26 @@ export default function FreeResourcesEditor() {
                     onChange={(e) => setDescription(e.target.value)}
                 ></textarea>
 
-                <div className="flex gap-2">
+                {/* Free / Paid toggle */}
+                <div className="flex gap-2 mt-2">
+                    <span className="text-sm font-medium text-gray-700 mr-2">Type:</span>
+                    <button
+                        type="button"
+                        onClick={() => setType(false)}
+                        className={`px-3 py-1 rounded ${!type ? "bg-green-600 text-white" : "bg-gray-300 text-gray-700"}`}
+                    >
+                        Free
+                    </button>
+                    <button
+                        type="button"
+                        onClick={() => setType(true)}
+                        className={`px-3 py-1 rounded ${type ? "bg-red-600 text-white" : "bg-gray-300 text-gray-700"}`}
+                    >
+                        Paid
+                    </button>
+                </div>
+
+                <div className="flex gap-2 mt-2">
                     <button
                         type="submit"
                         className="px-3 py-1 bg-purple text-white rounded hover:bg-purple-900"
@@ -208,6 +237,7 @@ export default function FreeResourcesEditor() {
                                 setUrl("");
                                 setImageSrc("");
                                 setDescription("");
+                                setType(false);
                             }}
                         >
                             Cancel
