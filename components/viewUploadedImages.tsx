@@ -13,6 +13,7 @@ export default function ViewUploadedImages() {
     const [images, setImages] = useState<UploadedImage[]>([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState("")
+    const [copiedId, setCopiedId] = useState<string | null>(null)
 
     const fetchImages = async () => {
         try {
@@ -22,8 +23,8 @@ export default function ViewUploadedImages() {
             if (!res.ok) throw new Error("Failed to fetch images")
             const data = await res.json()
             setImages(data)
-        } catch (err: any) {
-            setError(err.message || "An error occurred")
+        } catch (err) {
+            setError(`An error occurred ${err}`)
         } finally {
             setLoading(false)
         }
@@ -33,9 +34,18 @@ export default function ViewUploadedImages() {
         fetchImages()
 
         const interval = setInterval(fetchImages, 10000)
-
         return () => clearInterval(interval)
     }, [])
+
+    const handleCopy = async (fileUrl: string, id: string) => {
+        try {
+            await navigator.clipboard.writeText(fileUrl)
+            setCopiedId(id)
+            setTimeout(() => setCopiedId(null), 2000)
+        } catch (err) {
+            console.error("Failed to copy file URL", err)
+        }
+    }
 
     if (loading) {
         return <p className="text-center text-purple mt-10">Loading images...</p>
@@ -52,13 +62,14 @@ export default function ViewUploadedImages() {
     return (
         <div className="min-h-screen p-8 bg-gray-50">
             <div className="max-w-6xl mx-auto">
-                <h1 className="text-3xl font-bold text-purple mb-6">Uploaded Images</h1>
+                <h1 className="text-3xl font-bold text-purple mb-6">Uploaded Images - Click to copy URL!</h1>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {images.map((img) => (
                         <div
                             key={img._id}
-                            className="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden"
+                            onClick={() => handleCopy(img.fileUrl, img._id)}
+                            className="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden cursor-pointer relative"
                         >
                             <div className="relative w-full h-64">
                                 <Image
@@ -74,6 +85,12 @@ export default function ViewUploadedImages() {
                                     {new Date(img.uploadedAt).toLocaleString()}
                                 </p>
                             </div>
+
+                            {copiedId === img._id && (
+                                <div className="absolute inset-0 bg-black/50 flex items-center justify-center text-white font-medium text-sm">
+                                    ✅ Copied URL!
+                                </div>
+                            )}
                         </div>
                     ))}
                 </div>

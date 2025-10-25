@@ -27,8 +27,8 @@ export default function EditBios() {
                 if (!res.ok) throw new Error("Failed to fetch bios");
                 const data = await res.json();
                 setBios(data);
-            } catch (err: any) {
-                setError(err.message);
+            } catch (err) {
+                setError(`${err}`);
             } finally {
                 setLoading(false);
             }
@@ -58,8 +58,8 @@ export default function EditBios() {
                 prev.map((b) => (b._id === updated._id ? updated : b))
             );
             setSelectedBio(null);
-        } catch (err: any) {
-            setError(err.message);
+        } catch (err) {
+            setError(`${err}`);
         }
     };
 
@@ -77,7 +77,7 @@ export default function EditBios() {
                             {bios.map((bio) => (
                                 <li
                                     key={bio._id}
-                                    className="border border-purple/30 p-3 rounded-lg flex flex-col gap-2 bg-gray-900"
+                                    className="border border-purple/30 p-3 rounded-lg flex flex-col gap-2 bg-gray-200"
                                 >
                                     <span className="text-purple font-bold">{bio.title}</span>
                                     <p className="text-gray-900">

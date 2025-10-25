@@ -25,7 +25,7 @@ export default function LogIn() {
             }
 
         } catch (err) {
-            setMessage("Something went wrong. Please try again.")
+            setMessage(`Something went wrong. Please try again. ${err}`)
         }
     }
 

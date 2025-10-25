@@ -11,7 +11,6 @@ interface Bio {
 
 export default function GeneralBio() {
     const [bio, setBio] = useState<Bio | null>(null);
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetchBios() {
@@ -25,7 +24,6 @@ export default function GeneralBio() {
             }
         }
         fetchBios();
-        setLoading(false);
     }, []);
 
     return (

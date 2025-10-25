@@ -27,7 +27,7 @@ export default function LogIn() {
                 setMessage(data.message || "Invalid login")
             }
         } catch (err) {
-            setMessage("Something went wrong. Please try again.")
+            setMessage(`Something went wrong. Please try again. ${err}`)
         }
     }
 

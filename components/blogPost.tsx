@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
@@ -38,7 +38,9 @@ export default function BlogDetail() {
                 <h1 className="text-4xl font-extrabold text-gray-900 pb-5">{post.title}</h1>
 
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center text-gray-700 text-sm mb-4">
-                    <span>By <strong>{post.author}</strong></span>
+                    <span>
+                        By <strong>{post.author}</strong>
+                    </span>
                     <span>{new Date(post.date).toLocaleDateString()}</span>
                 </div>
 
@@ -46,16 +48,45 @@ export default function BlogDetail() {
                     {post.category}
                 </span>
 
+                {/* Paragraph rendering with inline link parsing */}
                 <div className="prose max-w-none mt-4 text-gray-900">
                     {post.text
                         .replace(/\\n/g, '\n')
                         .split('\n')
                         .filter(line => line.trim() !== '')
-                        .map((paragraph, index) => (
-                            <p key={index} className="p-1.5">
-                                {paragraph.trim()}
-                            </p>
-                        ))}
+                        .map((paragraph, index) => {
+                            const parts: React.ReactNode[] = []
+                            let lastIndex = 0
+                            const regex = /\[link:\s*(https?:\/\/[^\s|]+)\s*\|\s*([^\]]+)\]/gi
+                            let match
+
+                            while ((match = regex.exec(paragraph)) !== null) {
+                                const [full, url, label] = match
+                                const before = paragraph.slice(lastIndex, match.index)
+                                if (before) parts.push(before)
+                                parts.push(
+                                    <a
+                                        key={`${index}-${match.index}`}
+                                        href={url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-purple font-semibold hover:underline"
+                                    >
+                                        {label}
+                                    </a>
+                                )
+                                lastIndex = match.index + full.length
+                            }
+
+                            const after = paragraph.slice(lastIndex)
+                            if (after) parts.push(after)
+
+                            return (
+                                <p key={index} className="p-1.5 leading-relaxed">
+                                    {parts}
+                                </p>
+                            )
+                        })}
                 </div>
             </div>
         </div>

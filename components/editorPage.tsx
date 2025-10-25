@@ -54,7 +54,7 @@ export default function EditorPage() {
                 setMessage(`❌ Error: ${data.message || "Failed to save post"}`)
             }
         } catch (err) {
-            setMessage("❌ Network error, please try again.")
+            setMessage(`❌ Network error, please try again. ${err}`)
         }
     }
 

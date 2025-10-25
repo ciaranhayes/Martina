@@ -11,7 +11,6 @@ interface Bio {
 
 export default function Arts() {
     const [bio, setBio] = useState<Bio | null>(null);
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetchBios() {
@@ -25,7 +24,6 @@ export default function Arts() {
             }
         }
         fetchBios();
-        setLoading(false);
     }, []);
     return (
         <div className="relative isolate overflow-hidden px-6 pt-32 pb-20 lg:overflow-visible lg:px-0 mt-5">

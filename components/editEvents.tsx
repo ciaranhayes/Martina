@@ -1,6 +1,5 @@
 "use client"
 import { useEffect, useState } from "react"
-import { useRouter } from "next/navigation"
 
 interface EventPost {
     _id: string
@@ -11,7 +10,6 @@ interface EventPost {
 }
 
 export default function EventEditor() {
-    const router = useRouter()
     const [loading, setLoading] = useState(false)
     const [events, setEvents] = useState<EventPost[]>([])
     const [error, setError] = useState("")
@@ -33,8 +31,8 @@ export default function EventEditor() {
             if (!res.ok) throw new Error("Failed to fetch events")
             const data: EventPost[] = await res.json()
             setEvents(data)
-        } catch (err: any) {
-            setError(err.message || "Unknown error")
+        } catch (err) {
+            setError(`Unknown error ${err}`)
         } finally {
             setLoading(false)
         }
@@ -57,8 +55,8 @@ export default function EventEditor() {
             setTitle(""); setDescription(""); setDate(""); setLink("")
             setAdding(false)
             setMessage("✅ Event added!")
-        } catch (err: any) {
-            setMessage(`❌ ${err.message || "Error adding event"}`)
+        } catch (err) {
+            setMessage(`Unknown error ${err}`)
         }
     }
 
@@ -76,8 +74,8 @@ export default function EventEditor() {
             setSelectedEvent(null)
             setTitle(""); setDescription(""); setDate(""); setLink("")
             setMessage("✅ Event updated!")
-        } catch (err: any) {
-            setMessage(`❌ ${err.message || "Error updating event"}`)
+        } catch (err) {
+            setMessage(`Unknown error ${err}`)
         }
     }
 
@@ -90,8 +88,8 @@ export default function EventEditor() {
             fetchEvents()
             setSelectedEvent(null)
             setMessage("✅ Event deleted!")
-        } catch (err: any) {
-            setMessage(`❌ ${err.message || "Error deleting event"}`)
+        } catch (err) {
+            setMessage(`Unknown error ${err}`)
         }
     }
 

@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Footer from "./footer"
-import Link from "next/link"
+// import Link from "next/link"
+import FreeResources from "./freeResources"
 
 const products = [
     {
@@ -44,7 +45,7 @@ export default function Example() {
                     ))}
                 </div>
             </div>
-            <main className="flex flex-1 items-center justify-center mt-30 px-6 sm:py-32 lg:px-8">
+            {/* <main className="flex flex-1 items-center justify-center mt-30 px-6 sm:py-32 lg:px-8">
                 <div className="text-center">
                     <p className="text-base font-semibold text-purple">
                         Under Construction
@@ -61,7 +62,9 @@ export default function Example() {
                         </Link>
                     </div>
                 </div>
-            </main>
+            </main> */} 
+            <FreeResources />
+
             <Footer />
         </div>
     )

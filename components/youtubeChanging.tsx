@@ -26,8 +26,8 @@ export default function EditYoutubeLinks() {
                 if (!res.ok) throw new Error("Failed to fetch YouTube links");
                 const data = await res.json();
                 setLinks(data);
-            } catch (err: any) {
-                setError(err.message);
+            } catch (err) {
+                setError(`${err}`);
             } finally {
                 setLoading(false);
             }
@@ -57,8 +57,8 @@ export default function EditYoutubeLinks() {
                 prev.map((l) => (l._id === updated._id ? updated : l))
             );
             setSelectedLink(null);
-        } catch (err: any) {
-            setError(err.message);
+        } catch (err) {
+            setError(`${err}`);
         }
     };
 
@@ -90,7 +90,7 @@ export default function EditYoutubeLinks() {
                                 {items.map((link) => (
                                     <li
                                         key={link._id}
-                                        className="border border-purple/30 p-3 rounded-lg bg-gray-900 flex flex-col gap-2"
+                                        className="border border-purple/30 p-3 rounded-lg bg-gray-300 flex flex-col gap-2"
                                     >
                                         <span className="text-purple font-semibold">
                                             {link.description}

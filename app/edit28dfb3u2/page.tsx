@@ -5,6 +5,7 @@ import EventEditor from "@/components/editEvents"
 import ImageDropZone from "@/components/image-uploader"
 import EditBios from "@/components/editingBio"
 import EditYoutubeLinks from "@/components/youtubeChanging"
+import FreeResourcesEditor from "@/components/resourcesEditing"
 
 interface BlogPost {
     _id: string
@@ -26,7 +27,7 @@ export default function EditorPage() {
     const [category, setCategory] = useState("")
     const [text, setText] = useState("")
     const [message, setMessage] = useState("")
-    const [tab, setTab] = useState<"add" | "edit" | "delete" | "event" | "image" | "bio" | "youtube">("add");
+    const [tab, setTab] = useState<"add" | "edit" | "delete" | "event" | "image" | "bio" | "youtube" | "resources">("add");
     const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null)
 
     useEffect(() => {
@@ -60,8 +61,8 @@ export default function EditorPage() {
             if (!res.ok) throw new Error("Failed to fetch posts")
             const data: BlogPost[] = await res.json()
             setPosts(data)
-        } catch (err: any) {
-            setError(err.message || "Unknown error")
+        } catch (err) {
+            setError(`${err}`)
         } finally {
             setLoading(false)
         }
@@ -140,8 +141,12 @@ export default function EditorPage() {
                 <button className="px-4 py-2 bg-purple text-white rounded hover:bg-purple-900" onClick={() => setTab("add")}>Add</button>
                 <button className="px-4 py-2 bg-purple text-white rounded hover:bg-purple-900" onClick={() => setTab("edit")}>Edit</button>
                 <button className="px-4 py-2 bg-purple text-white rounded hover:bg-purple-900" onClick={() => setTab("delete")}>Delete</button>
+                <button className="px-4 py-2 bg-purple text-white rounded hover:bg-purple-900" onClick={() => setTab("resources")}>Resources</button>
                 <button className="px-4 py-2 bg-red-800 text-white rounded hover:bg-red-900" onClick={handleLogout}>Logout</button>
             </div>
+
+            {/* Resources tab */}
+            {tab === "resources" && (<FreeResourcesEditor />)}
 
             {/* Youtube tab */}
             {tab === "youtube" && (<EditYoutubeLinks />)}
@@ -164,8 +169,13 @@ export default function EditorPage() {
                 <div className="p-6 rounded-lg shadow-lg w-full overflow-hidden flex flex-col">
                     <h1 className="text-2xl font-bold text-purple mb-4">✍️ Write a Blog</h1>
                     <h2 className="text-lg text-gray-700 mb-6">
-                        Ensure each paragraph uses <span className="font-mono text-purple">"\n"</span> between it.
+                        Ensure each paragraph uses <span className="font-mono text-purple">&ldquo;\n&ldquo;</span> between it.
                     </h2>
+                    <h2 className="text-lg text-gray-700 mb-6">For links use format <span className="font-semibold">[link: url | text you want to appear]</span> : example <span className="font-semibold">[link: https://youtu.be/ub0GzU56YMA?si=flJLJbLaBxij6t2h | my favourite video on the internet!]</span> shows up then as <a
+                        href="https://youtu.be/ub0GzU56YMA?si=flJLJbLaBxij6t2h"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-purple font-semibold hover:underline">my favourite video on the internet</a> </h2>
 
                     <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto space-y-4 pr-2">
                         <input
@@ -350,7 +360,7 @@ export default function EditorPage() {
                                 <p className="text-gray-700 mb-6">
                                     Are you sure you want to permanently delete{" "}
                                     <span className="font-semibold text-purple">
-                                        "{selectedPost.title}"
+                                        &quot;{selectedPost.title}&quot;
                                     </span>
                                     ?
                                 </p>
