@@ -6,7 +6,7 @@ import Link from "next/link";
 interface Event {
     _id: string;
     title: string;
-    href: string;
+    link: string;
     description: string;
     date: string;
 }
@@ -60,7 +60,7 @@ export default function ContentContainerColoured() {
                             >
                                 <div className="group relative grow">
                                     <h3 className="mt-3 text-lg/6 font-semibold">
-                                        <Link href={event.href} target="_blank">
+                                        <Link href={event.link} target="_blank">
                                             <span className="absolute inset-0" />
                                             {event.title}
                                         </Link>
